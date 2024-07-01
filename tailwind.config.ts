@@ -17,10 +17,12 @@ const config = {
         "2xl": "1400px",
       },
     },
+    fontFamily: { secondary: "helvetica" },
     extend: {
-      spacing: { "1/20": "5%" },
+      spacing: { "1/20": "5%", errorSpacing: "-1.3rem" },
       colors: {
         schoolarioOrange: "rgb(255, 174, 95)",
+        schoolarioOrangeHovered: "rgb(224, 147, 70)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

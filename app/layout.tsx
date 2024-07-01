@@ -19,7 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={clsx(inter.className, alfaSlab.className, "bg-gray-800")}
+        className={clsx(
+          inter.className,
+          alfaSlab.className,
+          "bg-gray-800 h-screen w-screen"
+        )}
       >
         {children}
       </body>

@@ -1,9 +1,11 @@
-"use client";
-
-import clsx from "clsx";
 import { MouseEventHandler } from "react";
+import Link from "next/link";
+import clsx from "clsx";
 
-type ButtonProps = {
+import Button from "./Button";
+
+type LinkButtonProps = {
+  url: string;
   name?: string;
   variant?: "blue" | "red" | "yellow" | "green" | "orange" | "transparent";
   fontColor?: "white" | "black";
@@ -15,7 +17,7 @@ type ButtonProps = {
   icon?: React.ReactNode;
 };
 
-const Button: React.FC<ButtonProps> = ({
+const LinkButton: React.FC<LinkButtonProps> = ({
   name,
   className,
   variant = "blue",
@@ -25,12 +27,11 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   id,
   icon,
+  url,
 }) => {
   return (
-    <button
-      id={id}
-      onClick={onClick}
-      type={type}
+    <Link
+      href={url}
       className={clsx(
         {
           "flex gap-2 items-center justify-center font-medium rounded-lg text-base px-8 text-center":
@@ -55,10 +56,12 @@ const Button: React.FC<ButtonProps> = ({
         className
       )}
     >
-      {name}
-      {icon}
-    </button>
+      <button id={id} onClick={onClick} type={type}>
+        {name}
+        {icon}
+      </button>
+    </Link>
   );
 };
 
-export default Button;
+export default LinkButton;
