@@ -1,5 +1,7 @@
+import SignInAsTeacher from "@/src/features/signIn/components/SignInAsTeacher";
+
 const TeacherSignInPage = () => {
-  return <div></div>;
+  return <SignInAsTeacher />;
 };
 
 export default TeacherSignInPage;

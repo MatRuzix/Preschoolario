@@ -1,5 +1,7 @@
+import SignInAsParent from "@/src/features/signIn/components/SignInAsParent";
+
 const ParentSignInPage = () => {
-  return <div></div>;
+  return <SignInAsParent />;
 };
 
 export default ParentSignInPage;

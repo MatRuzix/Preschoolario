@@ -41,7 +41,7 @@ export const authOptions: NextAuthOptions = NextAuth({
           throw new Error("InvalidPassword");
         }
         return {
-          id: user.id + "",
+          id: user.id,
           email: user.email,
         };
       },

@@ -12,7 +12,7 @@ type InputProps = {
   type: "text" | "password" | "number";
   error?: string;
   className?: string;
-  disabled: boolean;
+  disabled?: boolean;
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 };
 
@@ -26,7 +26,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     type,
     error,
     className,
-    disabled,
+    disabled = false,
     onChange,
     ...restProps
   },

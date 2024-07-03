@@ -12,19 +12,19 @@ const PublicHeader = () => {
       <div className="flex space-x-16">
         <HeaderLink href="/aboutUs" text="O nas" />
         <Link
-          href="news"
+          href="/news"
           className="flex justify-center items-center text-xl hover:zoom-in-50"
         >
           Aktualności
         </Link>
         <Link
-          href="contactUs"
+          href="/contactUs"
           className="flex justify-center items-center text-xl"
         >
           Kontakt
         </Link>
         <Link
-          href="register"
+          href="/register"
           className="flex justify-center items-center text-xl"
         >
           Zarejestruj się
