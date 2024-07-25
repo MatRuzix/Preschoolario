@@ -19,6 +19,7 @@ model User {
   updatedAt         DateTime  @updatedAt
   email             String    @unique
   emailVerified     DateTime?
+  acceptTerms       Boolean
   firstName         String
   lastName          String
   password          String

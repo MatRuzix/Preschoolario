@@ -37,17 +37,17 @@ const Button: React.FC<ButtonProps> = ({
             baseStyle === "default",
         },
         {
-          "bg-customBlue hover:bg-blue-800 py-2":
+          "bg-blue-500 hover:bg-blue-800 py-2":
             variant === "blue" && baseStyle === "default",
-          "bg-customRed hover:bg-red-800 py-3":
+          "bg-red-500 hover:bg-red-800 py-3":
             variant === "red" && baseStyle === "default",
           "bg-transparent py-3 border border-white border-solid":
             variant === "transparent" && baseStyle === "default",
-          " bg-customYellow hover:bg-yellow-600 py-2":
+          " bg-yellow-400 hover:bg-yellow-600 py-2":
             variant === "yellow" && baseStyle === "default",
           "bg-schoolarioOrange hover:bg-schoolarioOrangeHovered py-2":
             variant === "orange" && baseStyle === "default",
-          "bg-customGreen hover:bg-green-800 py-2":
+          "bg-green-600 hover:bg-green-800 py-2":
             variant === "green" && baseStyle === "default",
           "text-white": fontColor === "white" && baseStyle === "default",
           "text-black": fontColor === "black" && baseStyle === "default",
