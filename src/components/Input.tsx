@@ -5,6 +5,7 @@ import React from "react";
 
 type InputProps = {
   id?: string;
+  size?: "small" | "normal" | "large";
   label?: string;
   labelTextColor?: "white" | "black";
   inputTextColor?: "white" | "black";
@@ -28,6 +29,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     className,
     disabled = false,
     onChange,
+    size = "normal",
     ...restProps
   },
   ref
@@ -36,7 +38,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
     <div className={clsx("relative", className)}>
       <label
         htmlFor={id}
-        className={clsx("block mb-2 text-sm font-medium text-left", {
+        className={clsx("block text-sm font-medium text-left", {
           "text-white": labelTextColor === "white",
         })}
       >
@@ -46,12 +48,15 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         {...restProps}
         id={id}
         className={clsx(
-          "bg-gray-300 border text-left text-sm rounded-lg block w-full p-2.5",
+          "bg-gray-300 border text-left rounded-lg block w-full p-2.5",
           {
             "border-red-500": error,
             "border-black": !error,
             "text-customLightGrey": disabled,
             "text-white": !disabled && inputTextColor === "white",
+            "text-sm": size === "normal",
+            "text-xs": size === "small",
+            "text-lg": size === "large",
           }
         )}
         type={type}
@@ -62,7 +67,7 @@ const Input: React.ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         disabled={disabled}
       />
       {error && (
-        <p className="absolute mt-2 font-extralight text-sm text-red-500 bottom-errorSpacing">
+        <p className="absolute mt-2 font-extralight text-xs text-red-500 bottom-errorSpacing">
           {error}
         </p>
       )}

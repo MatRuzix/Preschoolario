@@ -19,7 +19,7 @@ const config = {
     },
     fontFamily: { secondary: "helvetica" },
     extend: {
-      spacing: { "1/20": "5%", errorSpacing: "-1.3rem" },
+      spacing: { "1/20": "5%", errorSpacing: "-1.2rem" },
       colors: {
         schoolarioOrange: "rgb(255, 174, 95)",
         schoolarioOrangeHovered: "rgb(224, 147, 70)",

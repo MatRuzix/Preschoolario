@@ -1,0 +1,9 @@
+{
+  "errors": {
+    "noEmpty": "To pole nie może pozostać puste!",
+    "shortPassword": "Hasło jest za krótkie!",
+    "wrongEmail": "Format emaila jest nieprawidłowy!",
+    "wrongPasswordComposition": "Hasło musi posiadać znak specjalny oraz cyfrę!",
+    "passwordsNotMatch": "Hasła nie są zgodne!"
+  }
+}

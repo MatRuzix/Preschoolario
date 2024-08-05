@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const passwordRegExp = new RegExp(
-  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]$/
+  /^(?=.*\d)(?=.*[!@#$%^&*-])[a-zA-Z\d!@#$%^&*-]/
 );
 
 const signInSchema = z.object({
@@ -15,4 +15,5 @@ const signInSchema = z.object({
     .regex(passwordRegExp, { message: "wrongPasswordComposition" }),
 });
 
+export type InferedSignInSchema = z.infer<typeof signInSchema>;
 export default signInSchema;

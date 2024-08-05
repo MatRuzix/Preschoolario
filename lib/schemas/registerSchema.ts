@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 const passwordRegExp = new RegExp(
-  /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]$/
+  /^(?=.*\d)(?=.*[!@#$%^&*-])[a-zA-Z\d!@#$%^&*-]/
 );
 
 const registerSchema = z
@@ -29,4 +29,5 @@ const registerSchema = z
     path: ["acceptTerms"],
   });
 
+export type InferedRegisterSchema = z.infer<typeof registerSchema>;
 export default registerSchema;
