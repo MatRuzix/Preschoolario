@@ -7,7 +7,7 @@ import { compare } from "bcrypt";
 
 import prisma from "@/lib/prismaClient/prismaClient";
 
-export const authOptions: NextAuthOptions = NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
@@ -48,4 +48,6 @@ export const authOptions: NextAuthOptions = NextAuth({
     }),
   ],
   session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
-});
+};
+
+export default NextAuth(authOptions);

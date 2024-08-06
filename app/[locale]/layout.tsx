@@ -4,6 +4,10 @@ import clsx from "clsx";
 import "./globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
+import { getServerSession } from "next-auth";
+
+import { authOptions } from "../api/auth/[...nextauth]/options";
+import AppProvider from "@/lib/providers/AppProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 export const alfaSlab = Alfa_Slab_One({ weight: "400", subsets: ["latin"] });
@@ -15,12 +19,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params: { locale },
+  params,
 }: Readonly<{
   children: React.ReactNode;
   params: { locale: string };
 }>) {
   const messages = await getMessages();
+  const session = await getServerSession(authOptions);
 
   return (
     <html lang="en">
@@ -32,7 +37,7 @@ export default async function RootLayout({
         )}
       >
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <AppProvider session={session}> {children}</AppProvider>
         </NextIntlClientProvider>
       </body>
     </html>

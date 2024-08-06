@@ -31,12 +31,21 @@ const Registration = () => {
     };
     try {
       const res = await fetch("/api/register", requestOptions);
+      console.log(res);
       if (res.ok) {
         enqueueSnackbar("Zarejestrowano pomyślnie!", { variant: "success" });
-        router.push("/signIn");
+
+        data.isTeacher
+          ? router.push("/signIn/teacher")
+          : router.push("/signIn/parent");
+      }
+
+      if (res.status === 409) {
+        console.log("bob");
+        enqueueSnackbar("Użytkownik już istnieje!", { variant: "error" });
       }
     } catch (error) {
-      enqueueSnackbar(`Błąd: ${error}`, { variant: "error" });
+      console.error(error);
     }
   };
 
