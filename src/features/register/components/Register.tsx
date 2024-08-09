@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
@@ -8,6 +9,8 @@ import { enqueueSnackbar } from "notistack";
 import { Input, Button } from "@/src/components";
 import registerSchema from "@/lib/schemas/registerSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Modal } from "@/src/components";
+import mailSender from "@/lib/handlers/mailSender";
 
 import type { InferedRegisterSchema } from "@/lib/schemas/registerSchema";
 
@@ -22,6 +25,8 @@ const Registration = () => {
   });
   const t = useTranslations("errors");
   const router = useRouter();
+  const [isModalOpened, setIsModalOpened] = React.useState<boolean>(false);
+  const [isTeacher, setIsTeacher] = React.useState<boolean>(false);
 
   const onSubmit: SubmitHandler<InferedRegisterSchema> = async (data) => {
     const requestOptions = {
@@ -31,17 +36,24 @@ const Registration = () => {
     };
     try {
       const res = await fetch("/api/register", requestOptions);
-      console.log(res);
-      if (res.ok) {
-        enqueueSnackbar("Zarejestrowano pomyślnie!", { variant: "success" });
+      const body = await res.json();
 
-        data.isTeacher
-          ? router.push("/signIn/teacher")
-          : router.push("/signIn/parent");
+      if (res.ok) {
+        enqueueSnackbar(
+          "Zarejestrowano pomyślnie! Proszę potwierdzić swój email ",
+          { variant: "success" }
+        );
+        mailSender({
+          email: data.email,
+          operationType: "REGISTER",
+          userId: body.user.id,
+          isTeacher: data.isTeacher,
+        });
+        data.isTeacher && setIsTeacher(true);
+        setIsModalOpened(true);
       }
 
       if (res.status === 409) {
-        console.log("bob");
         enqueueSnackbar("Użytkownik już istnieje!", { variant: "error" });
       }
     } catch (error) {
@@ -51,6 +63,18 @@ const Registration = () => {
 
   return (
     <div className="flex w-full h-full justify-center items-center">
+      {isModalOpened && (
+        <Modal
+          title="Sukces!"
+          firstParagraph="Na twoją strzynkę mailową został wysłany link aktywacyjny, potwiedź aby ukończyć rejestrację"
+          buttonName="Przejdź do logowania"
+          handleClick={() => {
+            isTeacher
+              ? router.push("/signIn/teacher")
+              : router.push("/signIn/parent");
+          }}
+        />
+      )}
       <div className="flex flex-col w-4/5 h-4/5 bg-schoolarioOrange rounded-lg justify-center items-center gap-3">
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
           <div className="flex justify-between space-x-2">

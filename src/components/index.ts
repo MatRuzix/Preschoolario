@@ -4,5 +4,14 @@ import ListingBox from "./ListingBox";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import LinkButton from "./LinkButton";
 import Input from "./Input";
+import Modal from "./Modal";
 
-export { Button, HeaderLink, ListingBox, MaxWidthWrapper, LinkButton, Input };
+export {
+  Button,
+  HeaderLink,
+  ListingBox,
+  MaxWidthWrapper,
+  LinkButton,
+  Input,
+  Modal,
+};

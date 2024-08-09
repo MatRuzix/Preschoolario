@@ -5,5 +5,10 @@
     "wrongEmail": "Format emaila jest nieprawidłowy!",
     "wrongPasswordComposition": "Hasło musi posiadać znak specjalny oraz cyfrę!",
     "passwordsNotMatch": "Hasła nie są zgodne!"
+  },
+  "verification": {
+    "notFound": "Użytkownik nie został znaleziony.",
+    "alreadyVerified": "Email został już zatwierdzony.",
+    "expired": "Token aktywacji utracił ważność."
   }
 }

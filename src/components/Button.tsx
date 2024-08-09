@@ -13,6 +13,7 @@ type ButtonProps = {
   onClick?: MouseEventHandler;
   id?: string;
   icon?: React.ReactNode;
+  disabled?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -25,12 +26,14 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   id,
   icon,
+  disabled = false,
 }) => {
   return (
     <button
       id={id}
       onClick={onClick}
       type={type}
+      disabled={disabled}
       className={clsx(
         {
           "flex gap-2 items-center justify-center font-medium rounded-lg text-base px-8 text-center":
@@ -49,6 +52,7 @@ const Button: React.FC<ButtonProps> = ({
             variant === "orange" && baseStyle === "default",
           "bg-green-600 hover:bg-green-800 py-2":
             variant === "green" && baseStyle === "default",
+          "text-white bg-gray-400 hover:text-white hover:bg-gray-400": disabled,
           "text-white": fontColor === "white" && baseStyle === "default",
           "text-black": fontColor === "black" && baseStyle === "default",
         },
