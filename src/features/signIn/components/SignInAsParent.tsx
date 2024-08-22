@@ -37,6 +37,15 @@ const SignInAsParent = () => {
       return null;
     }
 
+    if (response?.error === "UserNotAuthenticated") {
+      enqueueSnackbar(
+        "Konto nie zostało aktywowane, sprawdź proszę swoją skrzynkę mailową i spróbuj ponownie.",
+        { variant: "error" }
+      );
+
+      return null;
+    }
+
     if (response?.error === "InvalidPassword") {
       enqueueSnackbar("Hasło nieprawidłowe", { variant: "error" });
 
