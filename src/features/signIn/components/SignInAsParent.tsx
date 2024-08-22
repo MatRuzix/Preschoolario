@@ -2,10 +2,11 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { enqueueSnackbar } from "notistack";
 import { useTranslations } from "next-intl";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 import { Input, Button } from "@/src/components";
 import signInSchema from "@/lib/schemas/logInSchema";
@@ -20,8 +21,9 @@ const SignInAsParent = () => {
     resolver: zodResolver(signInSchema),
     mode: "onTouched",
   });
+  const { status } = useSession();
   const t = useTranslations("errors");
-  const router = useRouter();
+
   const onSubmit: SubmitHandler<InferedSignInSchema> = async (data) => {
     const response = await signIn("credentials", {
       redirect: false,
@@ -52,8 +54,11 @@ const SignInAsParent = () => {
       return null;
     }
     enqueueSnackbar("Zalogowano pomyślnie, witaj!", { variant: "success" });
-    router.push("/dashboard");
   };
+  console.log(status);
+  if (status === "authenticated") {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="flex w-full h-full justify-center items-center">

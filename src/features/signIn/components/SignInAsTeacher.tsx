@@ -3,11 +3,11 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { enqueueSnackbar } from "notistack";
 import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 import { Input, Button } from "@/src/components";
 import signInSchema from "@/lib/schemas/logInSchema";
@@ -24,7 +24,7 @@ const SignInAsTeacher = () => {
     mode: "onTouched",
   });
   const t = useTranslations("errors");
-  const router = useRouter();
+  const { status } = useSession();
 
   const onSubmit: SubmitHandler<SignInUser> = async (data) => {
     const response = await signIn("credentials", {
@@ -46,8 +46,11 @@ const SignInAsTeacher = () => {
       return null;
     }
     enqueueSnackbar("Zalogowano pomyślnie, witaj!", { variant: "success" });
-    router.push("/dashboard");
   };
+  console.log(status);
+  if (status === "authenticated") {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="flex w-full h-full justify-center items-center">

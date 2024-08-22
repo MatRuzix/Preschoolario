@@ -5,6 +5,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { enqueueSnackbar } from "notistack";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 import { Input, Button } from "@/src/components";
 import registerSchema from "@/lib/schemas/registerSchema";
@@ -25,6 +27,8 @@ const Registration = () => {
   });
   const t = useTranslations("errors");
   const router = useRouter();
+  const { status } = useSession();
+
   const [isModalOpened, setIsModalOpened] = React.useState<boolean>(false);
   const [isTeacher, setIsTeacher] = React.useState<boolean>(false);
 
@@ -60,6 +64,10 @@ const Registration = () => {
       console.error(error);
     }
   };
+
+  if (status === "authenticated") {
+    redirect("/dashboard");
+  }
 
   return (
     <div className="flex w-full h-full justify-center items-center">
