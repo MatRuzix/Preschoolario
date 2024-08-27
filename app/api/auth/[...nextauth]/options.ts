@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
         }
 
         const isVerified = user.emailVerified;
-        console.log(isVerified);
+
         if (!isVerified) {
           throw new Error("UserNotAuthenticated");
         }

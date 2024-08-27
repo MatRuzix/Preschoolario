@@ -14,7 +14,6 @@ export default async function PublicLayout({
   if (session) {
     redirect("/dashboard");
   }
-  console.log(session);
   return (
     <div className="flex h-full w-full">
       <PublicHeader />

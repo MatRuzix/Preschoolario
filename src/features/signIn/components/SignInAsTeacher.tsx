@@ -47,7 +47,7 @@ const SignInAsTeacher = () => {
     }
     enqueueSnackbar("Zalogowano pomyślnie, witaj!", { variant: "success" });
   };
-  console.log(status);
+
   if (status === "authenticated") {
     redirect("/dashboard");
   }

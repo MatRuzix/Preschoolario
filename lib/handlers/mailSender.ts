@@ -32,7 +32,7 @@ const mailSender = async ({
     const daysToAdd = 5;
 
     expiryDate.setTime(expiryDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
-    console.log(operationType);
+
     if (operationType == "REGISTER") {
       const updatedUserRegistration = await prisma.user.update({
         where: { id: userId },

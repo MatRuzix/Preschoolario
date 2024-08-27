@@ -30,7 +30,7 @@ const SignInAsParent = () => {
       email: data.email,
       password: data.password,
     });
-    console.log(response?.error);
+
     if (response?.error === "UserNotFound") {
       enqueueSnackbar("Nie znaleziono użytkownika o tym emailu", {
         variant: "error",
@@ -55,7 +55,7 @@ const SignInAsParent = () => {
     }
     enqueueSnackbar("Zalogowano pomyślnie, witaj!", { variant: "success" });
   };
-  console.log(status);
+
   if (status === "authenticated") {
     redirect("/dashboard");
   }

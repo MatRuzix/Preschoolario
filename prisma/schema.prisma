@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  seed = "ts-node prisma/seed.ts"
 }
 
 datasource db {
@@ -15,7 +16,7 @@ datasource db {
 
 model User {
   id                    String    @id @default(uuid())
-  createedAt            DateTime  @default(now())
+  createdAt             DateTime  @default(now())
   updatedAt             DateTime  @updatedAt
   email                 String    @unique
   emailVerified         DateTime?
@@ -29,6 +30,44 @@ model User {
   forgotPasswordExpiry  DateTime?
   verificationToken     String?
   verificationExpiry    DateTime?
+  children              Child[]
+}
+
+model Group {
+  id                    String    @id @default(uuid())
+  children              Child[]
+  name                  String    @unique
+  image                 String?
+  events                Event[]
+}
+
+model Child {
+  id                    String    @id @default(uuid())
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  parentEmails          String[]
+  firstName             String
+  lastName              String
+  image                 String?
+  motherFirstName       String?
+  motherLastName        String?
+  fatherFirstName       String?
+  fatherLastName        String?
+  dateOfBirth           DateTime
+  group                 Group?     @relation(fields: [groupId], references: [id])
+  groupId               String?
+  parent                User?   @relation(fields: [parentId], references: [id])
+  parentId              String?
+}
+
+model Event {
+  id                    String    @id @default(uuid())
+  createdAt             DateTime  @default(now())
+  updatedAt             DateTime  @updatedAt
+  groups                Group[]
+  title                 String
+  description           String
+  dueDate               DateTime
 }
 
 enum Role {

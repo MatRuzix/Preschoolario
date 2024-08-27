@@ -14,8 +14,7 @@ const MailVerification = () => {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
   const isTeacher = searchParams.get("isTeacher") == "true";
-  console.log(token);
-  console.log(isTeacher);
+
   const router = useRouter();
   const t = useTranslations("verification");
   const [isVerified, setIsVerified] = React.useState<boolean | undefined>(
