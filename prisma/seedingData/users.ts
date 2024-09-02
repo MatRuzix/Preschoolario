@@ -1,5 +1,7 @@
 import { Role } from "@prisma/client";
 
+const data1 = new Date("2021-03-19");
+
 export const users = [
   {
     email: "bobek@gumuil.com",
@@ -8,6 +10,7 @@ export const users = [
     lastName: "Bobkowski",
     password: "$2b$12$eWDYbaFUpzIlEgnW9GiP.ON0U9u07XH2eObefVukgT0mFK1LUSU3e",
     role: Role.PARENT,
+    emailVerified: data1,
   },
   {
     email: "bobina@gumuil.com",
@@ -16,6 +19,7 @@ export const users = [
     lastName: "Bobkowska",
     password: "$2b$12$eWDYbaFUpzIlEgnW9GiP.ON0U9u07XH2eObefVukgT0mFK1LUSU3e",
     role: Role.PARENT,
+    emailVerified: data1,
   },
   {
     email: "bambosz@gumuil.com",
@@ -24,6 +28,7 @@ export const users = [
     lastName: "Bambosz",
     password: "$2b$12$eWDYbaFUpzIlEgnW9GiP.ON0U9u07XH2eObefVukgT0mFK1LUSU3e",
     role: Role.PARENT,
+    emailVerified: data1,
   },
   {
     email: "barbara@gumuil.com",
@@ -32,6 +37,7 @@ export const users = [
     lastName: "Barburka",
     password: "$2b$12$eWDYbaFUpzIlEgnW9GiP.ON0U9u07XH2eObefVukgT0mFK1LUSU3e",
     role: Role.TEACHER,
+    emailVerified: data1,
   },
   {
     email: "aneta@gumuil.com",
@@ -40,5 +46,6 @@ export const users = [
     lastName: "Burka",
     password: "$2b$12$eWDYbaFUpzIlEgnW9GiP.ON0U9u07XH2eObefVukgT0mFK1LUSU3e",
     role: Role.TEACHER,
+    emailVerified: data1,
   },
 ];

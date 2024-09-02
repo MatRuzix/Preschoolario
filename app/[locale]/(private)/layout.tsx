@@ -1,8 +1,11 @@
+import React from "react";
+
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
 import PrivateHeader from "@/src/features/headers/private/admin/PrivateHeader";
 import { authOptions } from "@/app/api/auth/[...nextauth]/options";
+import Sidebar from "@/src/features/sidebar/components/Sidebar";
 
 export default async function PrivateLayout({
   children,
@@ -16,9 +19,12 @@ export default async function PrivateLayout({
   }
 
   return (
-    <div>
+    <div className="flex h-full w-full">
       <PrivateHeader />
-      {children}
+      <Sidebar />
+      <div id="outer-wrapper" className="flex h-full w-full pt-28 pb-6 pl-14">
+        {children}
+      </div>
     </div>
   );
 }
