@@ -22,7 +22,7 @@ export default async function PrivateLayout({
     <div className="flex h-full w-full">
       <PrivateHeader />
       <Sidebar />
-      <div id="outer-wrapper" className="flex h-full w-full pt-28 pb-6 pl-14">
+      <div id="outer-wrapper" className="flex h-full w-full pt-28 pb-6 pl-16">
         {children}
       </div>
     </div>

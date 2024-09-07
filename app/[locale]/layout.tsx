@@ -39,11 +39,9 @@ export default async function RootLayout({
           "bg-gray-800 h-screen w-screen"
         )}
       >
-        <React.Suspense fallback={<Spinner />}>
-          <NextIntlClientProvider messages={messages}>
-            <AppProvider session={session}> {children}</AppProvider>
-          </NextIntlClientProvider>
-        </React.Suspense>
+        <NextIntlClientProvider messages={messages}>
+          <AppProvider session={session}> {children}</AppProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

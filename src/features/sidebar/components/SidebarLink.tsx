@@ -26,7 +26,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
       <div
         id="sidebarLinkWrapper"
         className={clsx(
-          "flex w-full h-5 space-x-5 transition-all duration-75 delay-75",
+          "flex h-5 space-x-5 transition-all duration-75 delay-75",
           {
             "w-16 hover:scale-125": !isSidebarOpen,
             "w-60 hover:translate-x-2 hover:scale-110": isSidebarOpen,
