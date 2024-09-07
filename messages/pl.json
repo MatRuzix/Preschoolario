@@ -14,7 +14,13 @@
   "sidebar": {
     "dashboard": "Panel główny",
     "groups": "Grupy",
+    "group": "Grupę",
     "children": "Dzieci",
-    "events": "Wydarzenia"
+    "child": "Dziecko",
+    "events": "Wydarzenia",
+    "event": "Wydarzenie",
+    "add": "Dodaj",
+    "calendar": "Kalendarz",
+    "payments": "Płatności"
   }
 }
