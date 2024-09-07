@@ -1,7 +1,10 @@
-import React from "react";
-
+import Skeleton from "../../suspense/Skeleton";
 const Groups = () => {
-  return <div>ddadwadwadwdadwdawdwadW</div>;
+  return (
+    <div>
+      <Skeleton />
+    </div>
+  );
 };
 
 export default Groups;

@@ -48,11 +48,35 @@ export const authOptions: NextAuthOptions = {
         }
         return {
           id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
         };
       },
     }),
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          id: token.id,
+          firstName: token.firstName,
+          lastName: token.lastName,
+        },
+      };
+    },
+    jwt: async ({ user: currentUser, token }) => {
+      const user = await prisma.user.findUnique({
+        where: { email: token.email as string },
+      });
+      if (user) {
+        (token.firstName = user.firstName), (token.lastName = user.lastName);
+      }
+      return token;
+    },
+  },
   session: { strategy: "jwt", maxAge: 30 * 24 * 60 * 60 },
 };
 

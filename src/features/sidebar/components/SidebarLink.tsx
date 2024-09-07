@@ -30,14 +30,13 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
           {
             "w-16 hover:scale-125": !isSidebarOpen,
             "w-60 hover:translate-x-2 hover:scale-110": isSidebarOpen,
-            " text-white": pathname != `/pl${path}`,
-            "text-schoolarioOrange": pathname == `/pl${path}`,
+            "text-schoolarioOrangeHovered": pathname == `/pl${path}`,
           }
         )}
       >
         <div
           id="iconBox"
-          className="pl-6 w-10 h-6 z-40 bg-gradient-to-r from-gray-800 from-55% to-transparent to-65%"
+          className="pl-6 w-10 h-6 z-40 bg-gradient-to-r from-slate-300 from-55% to-transparent to-65%"
         >
           {icon}
         </div>
@@ -45,7 +44,7 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({
           id="linkText"
           className={clsx("z-30 transition-all", {
             "-translate-x-44": !isSidebarOpen,
-            "duration-500 ease-out delay-200": isSidebarOpen,
+            "duration-300 ease-out delay-200": isSidebarOpen,
           })}
         >
           {name}

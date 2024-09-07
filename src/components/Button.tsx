@@ -5,7 +5,14 @@ import { MouseEventHandler } from "react";
 
 type ButtonProps = {
   name?: string;
-  variant?: "blue" | "red" | "yellow" | "green" | "orange" | "transparent";
+  variant?:
+    | "blue"
+    | "red"
+    | "yellow"
+    | "green"
+    | "orange"
+    | "transparent"
+    | "black";
   fontColor?: "white" | "black";
   className?: string;
   type?: "submit" | "button";
@@ -42,9 +49,11 @@ const Button: React.FC<ButtonProps> = ({
         {
           "bg-blue-500 hover:bg-blue-800 py-2":
             variant === "blue" && baseStyle === "default",
+          "bg-black hover:bg-slate-700 py-2":
+            variant === "black" && baseStyle === "default",
           "bg-red-500 hover:bg-red-800 py-3":
             variant === "red" && baseStyle === "default",
-          "bg-transparent py-3 border border-white border-solid":
+          "bg-transparent py-3 border border-solid":
             variant === "transparent" && baseStyle === "default",
           " bg-yellow-400 hover:bg-yellow-600 py-2":
             variant === "yellow" && baseStyle === "default",
@@ -53,8 +62,10 @@ const Button: React.FC<ButtonProps> = ({
           "bg-green-600 hover:bg-green-800 py-2":
             variant === "green" && baseStyle === "default",
           "text-white bg-gray-400 hover:text-white hover:bg-gray-400": disabled,
-          "text-white": fontColor === "white" && baseStyle === "default",
-          "text-black": fontColor === "black" && baseStyle === "default",
+          "text-white hover:text-slate-300":
+            fontColor === "white" && baseStyle === "default",
+          "text-black hover:text-slate-600":
+            fontColor === "black" && baseStyle === "default",
         },
         className
       )}

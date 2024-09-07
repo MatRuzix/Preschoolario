@@ -27,14 +27,12 @@ const Sidebar = () => {
     <div>
       <button
         id="sidebar-toggle-button"
-        className={clsx(
-          "flex absolute w-5 h-10 mt-4 px-4 top-20 left-2 z-50 text-white"
-        )}
+        className={clsx("flex absolute w-5 h-10 mt-4 px-4 top-20 left-2 z-50")}
         onClick={() => setIsSidebarOpen((value) => !value)}
       >
         <FontAwesomeIcon
           icon={faAnglesRight}
-          className={clsx("transition all duration-200", {
+          className={clsx("transition all duration-200 text-black", {
             "rotate-180": isSidebarOpen,
           })}
         />
@@ -110,7 +108,7 @@ const Sidebar = () => {
       </div>
       <div
         className={clsx(
-          "flex flex-col h-full w-60 fixed bg-gray-800 mt-20 transition all duration-200 ease-out",
+          "flex flex-col h-full w-60 fixed bg-slate-300 mt-20 transition all duration-200 ease-out",
           { "-translate-x-44": !isSidebarOpen, "-translate-x-0": isSidebarOpen }
         )}
       ></div>
