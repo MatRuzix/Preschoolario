@@ -3,20 +3,25 @@
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 import Logo from "@/src/icons/Logo";
 import { Button } from "@/src/components";
 
 const PrivateHeader = () => {
   const session = useSession();
-  console.log(session);
+
   return (
     <div className="fixed flex w-full h-20 px-10 bg-gradient-to-r from-schoolarioOrange from-20% to-gray-200 to-40% backdrop-blur-md justify-between border-b-4">
       <Link href="/landing" className="flex">
         <Logo />
       </Link>
       <div className="flex space-x-16 items-center">
-        <p>{`${session.data?.user?.firstName} ${session.data?.user?.lastName}`}</p>
+        {/* @ts-ignore */}
+        <div className="flex items-center space-x-4 px-2 border-2 border-black">
+          <p>{`${session.data?.user?.firstName} ${session.data?.user?.lastName}`}</p>
+          <Image src="/stock_avatar.jpg" alt="avatar" width={40} height={40} />
+        </div>
         <div className="flex flex-col space-y-1">
           <Button
             name="Konto"
