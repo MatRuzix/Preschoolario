@@ -16,9 +16,9 @@ const PrivateHeader = () => {
       <Link href="/landing" className="flex">
         <Logo />
       </Link>
-      <div className="flex space-x-16 items-center">
-        {/* @ts-ignore */}
+      <div className="flex space-x-12 items-center">
         <div className="flex items-center space-x-4 px-2 border-2 border-black">
+          {/* @ts-ignore */}
           <p>{`${session.data?.user?.firstName} ${session.data?.user?.lastName}`}</p>
           <Image src="/stock_avatar.jpg" alt="avatar" width={40} height={40} />
         </div>
